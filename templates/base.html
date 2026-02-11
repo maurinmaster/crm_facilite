@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CRM Facilite</title>
+  <style>
+    :root{
+      --bg: #0b0a12;
+      --grad1: rgba(124,58,237,0.20);
+      --grad2: rgba(99,102,241,0.14);
+      --panel: rgba(255,255,255,0.94);
+      --border: rgba(15,23,42,0.12);
+      --text: #0f172a;
+      --muted: #64748b;
+      --pri: #7c3aed;
+      --pri2:#6d28d9;
+      --shadow: 0 24px 60px rgba(15,23,42,0.18);
+      --r: 16px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% -10%, var(--grad1), transparent 55%),
+        radial-gradient(900px 500px at 90% 0%, var(--grad2), transparent 55%),
+        linear-gradient(180deg,#f8fafc 0%,#f5f3ff 60%,#ffffff 100%);
+    }
+    a{color:var(--pri);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* Prevent horizontal overflow */
+    html, body { overflow-x: hidden; }
+    .card, .wrap, .row { max-width: 100%; }
+    .muted, p, div, a { overflow-wrap: anywhere; word-break: break-word; }
+    .wrap{max-width:1200px;margin:0 auto;padding:20px}
+    .card{background:var(--panel);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow)}
+    .btn{border:1px solid transparent;border-radius:12px;padding:10px 14px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;line-height:1;min-height:40px;gap:8px;white-space:nowrap}
+    .btn.primary{background:linear-gradient(180deg,var(--pri) 0%,var(--pri2) 100%);color:#fff;box-shadow:0 10px 24px rgba(124,58,237,0.18)}
+    .btn.secondary{background:rgba(255,255,255,0.85);border-color:var(--border)}
+    .btn.danger{background:linear-gradient(180deg,#ef4444 0%,#dc2626 100%);color:#fff;box-shadow:0 10px 22px rgba(239,68,68,0.18)}
+    .input{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:rgba(255,255,255,0.92)}
+    .row{display:flex;gap:12px;flex-wrap:wrap}
+    .muted{color:var(--muted);font-size:14px}
+    .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:12px;flex-wrap:wrap}
+
+    /* Responsive */
+    @media (max-width: 720px){
+      .wrap{padding:14px}
+      .top{flex-direction:column;align-items:stretch}
+      .row{flex-direction:column}
+
+      /* Keep action buttons readable on mobile */
+      .top .btn{width:auto;min-width:110px}
+      .top > div:last-child{display:grid !important;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-items:stretch}
+
+      /* default: buttons full width inside forms/cards */
+      form .btn{width:100%}
+      a.btn{display:inline-flex;justify-content:center}
+
+      /* hard stop for long content (URLs/tokens) */
+      .card{overflow:hidden}
+
+      /* labels grid: collapse to single column on mobile */
+      [style*="grid-template-columns:120px 1fr"]{
+        grid-template-columns: 1fr !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>
